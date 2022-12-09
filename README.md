@@ -7,8 +7,9 @@ Após um determinado tempo, as moléculas adquirem energia suficiente, o que per
 ### Rodar Scripts
 #### Compilar
 Na pasta dos arquivos .erl abra o terminar erlang, para isto pelo terminal do windows vá ate a pasta e digite **erl**. Após terminal aberto rode o seguinte comando.
+`c(molecule).`
 `c(kepler).`
 
 #### Rodar
 Ainda com o terminal erlang aberto rode.
-`kepler:start().`
+`kepler:start(TEMPO_PARA_CRIACAO_DE_NOVAS_MOLECULAS).`
