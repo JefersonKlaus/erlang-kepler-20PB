@@ -1,14 +1,16 @@
 -module(molecule).
--export([startMolecule/1]).
+-export([startMolecule/2]).
 
-
-startMolecule(MoleculeType) ->
-    Time = random(10,30),
-    io:format("Molecula (~p) precisa ~p segundos para adiquirir energia. ~n", [MoleculeType, integer_to_list(Time)]),
-    time:sleeper(Time * 1000),
-    io:format("Molecula (~p) precisa ~p segundos para adiquirir energia. ~n", [MoleculeType, integer_to_list(Time)]).
-    
 
 random(RandomMin, RandomMax) ->
-    Result = round(rand:uniform(RandomMin - RandomMax) + RandomMin),
+    Result = round(rand:uniform(RandomMax - RandomMin) + RandomMin),
     Result.
+
+startMolecule(MoleculeType, PidKepler) ->
+    Time = random(10,30),
+    io:format("Molecula (~p) precisa ~p segundos para adiquirir energia. ~n", [MoleculeType, integer_to_list(Time)]),
+    
+    timer:sleep(Time * 1000),
+    
+    io:format("Molecula (~p) pronta. ~n", [MoleculeType]),
+    PidKepler ! {MoleculeType}.
